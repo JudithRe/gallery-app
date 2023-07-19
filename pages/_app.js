@@ -21,7 +21,12 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component fetchedArtData={{ data, error, isLoading }} {...pageProps} />
+      <Component
+        data={data}
+        error={error}
+        isLoading={isLoading}
+        {...pageProps}
+      />
     </>
   );
 }
