@@ -1,5 +1,4 @@
-import Navigation from "@/components/Navigation";
-import ArtPieces from "../components/ArtPieces";
+import ArtPieces from "../../components/ArtPieces";
 
 export default function artPiecesPage({ data }) {
   return (
