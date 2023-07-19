@@ -13,9 +13,7 @@ export default function ArtPieces({ data }) {
               width={500}
               height={500}
             ></Image>
-            <h2>
-              {name}: {artist}
-            </h2>
+            <p>{`"${name}" by ${artist}`}</p>
           </li>
         ))}
       </ul>
