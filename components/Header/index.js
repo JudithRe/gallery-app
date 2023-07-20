@@ -9,9 +9,11 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
+  height: var(--header-height);
   position: fixed;
+  text-align: center;
   top: 0;
-  width: 100vw;
+  width: 100%;
   padding: 1rem;
-  background-color: green;
+  background-color: white;
 `;
