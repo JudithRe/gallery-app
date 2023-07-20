@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { styled } from "styled-components";
+import { StyledFigure } from "../ArtPieceDetails";
 
 export default function ArtPieces({ data }) {
   console.log(data);
@@ -10,13 +11,15 @@ export default function ArtPieces({ data }) {
       <StyledList>
         {data.map(({ slug, name, artist, imageSource }) => (
           <StyledLink href={`/art-pieces/${slug}`} key={slug}>
-            <Image
-              src={imageSource}
-              alt={`${name} by ${artist}`}
-              width={500}
-              height={500}
-            ></Image>
-            <p>{`"${name}" by ${artist}`}</p>
+            <StyledFigure>
+              <Image
+                src={imageSource}
+                alt={`${name} by ${artist}`}
+                width={500}
+                height={500}
+              ></Image>
+              <figcaption>{`"${name}" by ${artist}`}</figcaption>
+            </StyledFigure>
           </StyledLink>
         ))}
       </StyledList>
@@ -37,5 +40,5 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 1.3rem;
   color: black;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 `;
