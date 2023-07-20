@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+:root{
+  --header-height: 120px;
+  --footer-height: 100px;
+}
   *,
   *::before,
   *::after {
@@ -8,7 +12,7 @@ export default createGlobalStyle`
   }
 
   body {
-    margin: 0;
     font-family: system-ui;
+    margin: 0;
   }
 `;

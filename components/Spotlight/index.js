@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { styled } from "styled-components";
 
 export default function Spotlight({ data }) {
   function getRandomInt(max) {
@@ -13,7 +14,7 @@ export default function Spotlight({ data }) {
   const randomArtPiece = data[randomNumber];
 
   return (
-    <>
+    <StyledSpotlight>
       <Image
         src={randomArtPiece.imageSource}
         alt={`${randomArtPiece.name} by ${randomArtPiece.artist}`}
@@ -21,6 +22,14 @@ export default function Spotlight({ data }) {
         height={500}
       />
       <h1>{randomArtPiece.artist}</h1>
-    </>
+    </StyledSpotlight>
   );
 }
+
+const StyledSpotlight = styled.section`
+  margin-top: var(--header-height);
+  margin-bottom: var(--footer-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

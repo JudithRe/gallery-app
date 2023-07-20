@@ -1,20 +1,21 @@
 import Link from "next/link";
 import { styled } from "styled-components";
+import { StyledLink } from "../ArtPieces";
 
 export default function Navigation() {
   return (
     <StyledNavigation>
-      <nav>
+      <>
         <li>
-          <Link href="/">Spotlight</Link>
+          <StyledLink href="/">Spotlight</StyledLink>
         </li>
         <li>
-          <Link href="/art-pieces/">Art Pieces</Link>
+          <StyledLink href="/art-pieces/">Art Pieces</StyledLink>
         </li>
         <li>
-          <Link href="/favourites/">Favourites</Link>
+          <StyledLink href="/favourites/">Favourites</StyledLink>
         </li>
-      </nav>
+      </>
     </StyledNavigation>
   );
 }
@@ -22,9 +23,15 @@ export default function Navigation() {
 const StyledNavigation = styled.footer`
   position: fixed;
   bottom: 0;
-  width: 100vw;
+  width: 100%;
+  height: var(--footer-height);
   padding: 2rem;
-  background-color: green;
+  background-color: white;
+  text-align: center;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 //  Create the component Layout that renders the Navigation component
