@@ -1,23 +1,25 @@
-export default function ArtPieceDetails({ image, title, year, genre }) {
+import Image from "next/image";
+import { styled } from "styled-components";
+
+export default function ArtPieceDetails({ image, title, year, genre, artist }) {
   return (
-    <div>
-      Lorem Ipsum ist ein einfacher Demo-Text für die Print- und
-      Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard
-      Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll
-      Wörter nahm und diese durcheinander warf um ein Musterbuch zu erstellen.
-      Es hat nicht nur 5 Jahrhunderte überlebt, sondern auch in Spruch in die
-      elektronische Schriftbearbeitung geschafft (bemerke, nahezu unverändert).
-      Bekannt wurde es 1960, mit dem erscheinen von "Letraset", welches Passagen
-      von Lorem Ipsum enhielt, so wie Desktop Software wie "Aldus PageMaker" -
-      ebenfalls mit Lorem Ipsum.Lorem Ipsum ist ein einfacher Demo-Text für die
-      Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der
-      Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand
-      voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu
-      erstellen. Es hat nicht nur 5 Jahrhunderte überlebt, sondern auch in
-      Spruch in die elektronische Schriftbearbeitung geschafft (bemerke, nahezu
-      unverändert). Bekannt wurde es 1960, mit dem erscheinen von "Letraset",
-      welches Passagen von Lorem Ipsum enhielt, so wie Desktop Software wie
-      "Aldus PageMaker" - ebenfalls mit Lorem Ipsum.
-    </div>
+    <>
+      <figure>
+        <Image
+          src={image}
+          alt={`${title} by ${artist}`}
+          width={500}
+          height={500}
+        ></Image>
+        <figcaption>{`${title} by ${artist} (${year}) ${genre}`}</figcaption>
+      </figure>
+      <BackButton as="a" href="/art-pieces/">
+        Return to List
+      </BackButton>
+    </>
   );
 }
+
+const BackButton = styled.button`
+  background-color: yellow;
+`;
