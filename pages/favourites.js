@@ -1,13 +1,11 @@
-import ArtPieces from "../../components/ArtPieces";
-
-export default function artPiecesPage({
+export default function FavouritesPage({
   data,
   handleToggleFavorite,
   artPiecesInfo,
 }) {
   return (
     <>
-      <ArtPieces
+      <Favourites
         data={data}
         artPiecesInfo={artPiecesInfo}
         handleToggleFavorite={handleToggleFavorite}

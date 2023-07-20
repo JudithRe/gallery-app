@@ -1,19 +1,33 @@
 import Image from "next/image";
 import { styled } from "styled-components";
+import ImageWithButton from "../ImageWithButton";
 
-export default function ArtPieceDetails({ image, title, year, genre, artist }) {
+export default function ArtPieceDetails({
+  image,
+  title,
+  year,
+  genre,
+  artist,
+
+  handleToggleFavorite,
+  slug,
+  artPiecesInfo,
+}) {
   return (
     <StyledDetail>
       <BackButton as="a" href="/art-pieces/">
         Return to List
       </BackButton>
       <StyledFigure>
-        <Image
+        <ImageWithButton
           src={image}
           alt={`${title} by ${artist}`}
           width={500}
           height={500}
-        ></Image>
+          handleToggleFavorite={handleToggleFavorite}
+          slug={slug}
+          artPiecesInfo={artPiecesInfo}
+        ></ImageWithButton>
         <figcaption>{`${title} by ${artist} (${year}) ${genre}`}</figcaption>
       </StyledFigure>
     </StyledDetail>

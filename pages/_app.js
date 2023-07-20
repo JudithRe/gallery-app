@@ -19,22 +19,34 @@ const fetcher = async (url) => {
 };
 export default function App({ Component, pageProps }) {
   const { data, error, isLoading, mutate } = useSWR(URL, fetcher);
+  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
-  // const [artData, setArtData] = useState([]);
-  // setArtData(() => {
-  //   if (data) {
-  //     return data;
-  //   }
-  //   return "loading...";
-  // });
+  function handleToggleFavorite(slug) {
+    setArtPiecesInfo((artPiecesInfo) => {
+      const info = artPiecesInfo.find((info) => info.slug === slug);
+      if (info) {
+        return artPiecesInfo.map((info) => {
+          if (info.slug !== slug) {
+            return info;
+          }
+          return {
+            ...info,
+            isFavorite: !info.isFavorite,
+          };
+        });
+      }
+      console.log("artPiecesInfo", artPiecesInfo);
+      return [...artPiecesInfo, { slug, isFavorite: true }];
+    });
+  }
 
   return (
     <>
       <GlobalStyle />
       <Component
+        handleToggleFavorite={handleToggleFavorite}
+        artPiecesInfo={artPiecesInfo}
         data={data}
-        // error={error}
-        // isLoading={isLoading}
         {...pageProps}
       />
       <Layout />

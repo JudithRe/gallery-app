@@ -1,8 +1,13 @@
 import Image from "next/image";
 import { styled } from "styled-components";
 import { StyledLink } from "../ArtPieces";
+import ImageWithButton from "../ImageWithButton";
 
-export default function Spotlight({ data }) {
+export default function Spotlight({
+  data,
+  handleToggleFavorite,
+  artPiecesInfo,
+}) {
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -17,11 +22,14 @@ export default function Spotlight({ data }) {
   return (
     <StyledLink href={`/art-pieces/${randomArtPiece.slug}`}>
       <StyledSpotlight>
-        <Image
+        <ImageWithButton
           src={randomArtPiece.imageSource}
           alt={`${randomArtPiece.name} by ${randomArtPiece.artist}`}
           width={500}
           height={500}
+          artPiecesInfo={artPiecesInfo}
+          handleToggleFavorite={handleToggleFavorite}
+          slug={randomArtPiece.slug}
         />
         <h1>{randomArtPiece.artist}</h1>
       </StyledSpotlight>
