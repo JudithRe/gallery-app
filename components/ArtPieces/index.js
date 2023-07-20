@@ -33,7 +33,7 @@ const StyledList = styled.div`
   margin-bottom: var(--footer-height);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 `;
 
 export const StyledLink = styled(Link)`
