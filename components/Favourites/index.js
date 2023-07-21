@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { styled } from "styled-components";
 import { StyledFigure } from "../ArtPieceDetails";
 import ImageWithButton from "../ImageWithButton";
+import { StyledLink, StyledList } from "../ArtPieces";
 
 export default function Favourites({
   data,
@@ -9,41 +8,39 @@ export default function Favourites({
   artPiecesInfo,
 }) {
   if (data) {
+    function filterFavorite(slug) {
+      const foundArt = artPiecesInfo.find((info) => info.slug === slug);
+      if (foundArt) {
+        if (foundArt.isFavorite) {
+          return true;
+        }
+      }
+      return false;
+    }
+    const filteredData = data.filter((piece) => {
+      return filterFavorite(piece.slug);
+    });
+
     return (
       <StyledList>
-        {data.map(({ slug, name, artist, imageSource }) => (
-          <StyledLink href={`/art-pieces/${slug}`} key={slug}>
-            <StyledFigure>
-              <ImageWithButton
-                src={imageSource}
-                alt={`${name} by ${artist}`}
-                width={500}
-                height={500}
-                artPiecesInfo={artPiecesInfo}
-                handleToggleFavorite={handleToggleFavorite}
-                slug={slug}
-              ></ImageWithButton>
+        {filteredData.map(({ slug, name, artist, imageSource }) => (
+          <StyledFigure key={slug}>
+            <ImageWithButton
+              src={imageSource}
+              alt={`${name} by ${artist}`}
+              width={500}
+              height={500}
+              artPiecesInfo={artPiecesInfo}
+              handleToggleFavorite={handleToggleFavorite}
+              slug={slug}
+            ></ImageWithButton>
+            <StyledLink href={`/art-pieces/${slug}`} key={slug}>
               <figcaption>{`"${name}" by ${artist}`}</figcaption>
-            </StyledFigure>
-          </StyledLink>
+            </StyledLink>
+          </StyledFigure>
         ))}
       </StyledList>
     );
   }
-  return <h1>Loadin...</h1>;
+  return <h1>Loading...</h1>;
 }
-
-const StyledList = styled.div`
-  margin-top: var(--header-height);
-  margin-bottom: var(--footer-height);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const StyledLink = styled(Link)`
-  text-decoration: none;
-  font-size: 1.3rem;
-  color: black;
-  margin-bottom: 2.5rem;
-`;

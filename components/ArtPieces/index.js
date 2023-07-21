@@ -13,20 +13,20 @@ export default function ArtPieces({
     return (
       <StyledList>
         {data.map(({ slug, name, artist, imageSource }) => (
-          <StyledLink href={`/art-pieces/${slug}`} key={slug}>
-            <StyledFigure>
-              <ImageWithButton
-                src={imageSource}
-                alt={`${name} by ${artist}`}
-                width={500}
-                height={500}
-                artPiecesInfo={artPiecesInfo}
-                handleToggleFavorite={handleToggleFavorite}
-                slug={slug}
-              ></ImageWithButton>
+          <StyledFigure key={slug}>
+            <ImageWithButton
+              src={imageSource}
+              alt={`${name} by ${artist}`}
+              width={500}
+              height={500}
+              artPiecesInfo={artPiecesInfo}
+              handleToggleFavorite={handleToggleFavorite}
+              slug={slug}
+            ></ImageWithButton>
+            <StyledLink href={`/art-pieces/${slug}`}>
               <figcaption>{`"${name}" by ${artist}`}</figcaption>
-            </StyledFigure>
-          </StyledLink>
+            </StyledLink>
+          </StyledFigure>
         ))}
       </StyledList>
     );
@@ -34,7 +34,7 @@ export default function ArtPieces({
   return <h1>Loadin...</h1>;
 }
 
-const StyledList = styled.div`
+export const StyledList = styled.div`
   margin-top: var(--header-height);
   margin-bottom: var(--footer-height);
   display: flex;

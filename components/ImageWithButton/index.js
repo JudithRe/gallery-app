@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { styled } from "styled-components";
 import HeartIcon from "../../assets/heart.svg";
+import { StyledLink } from "../ArtPieces";
 
 export default function ImageWithButton({
   src,
@@ -19,15 +20,21 @@ export default function ImageWithButton({
 
   return (
     <StyledFavoriteContainer>
-      <StyledImage
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-      ></StyledImage>
       <StyledFavoriteButton onClick={() => handleToggleFavorite(slug)}>
-        <HeartIcon height={30} fill={`${isFavorite ? "red" : "gray"}`} />
+        <HeartIcon
+          height={30}
+          fill={`${isFavorite ? "red" : "gray"}`}
+          // style={{ zIndex: "10" }}
+        />
       </StyledFavoriteButton>
+      <StyledLink href={`/art-pieces/${slug}`}>
+        <StyledImage
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+        ></StyledImage>
+      </StyledLink>
     </StyledFavoriteContainer>
   );
 }
