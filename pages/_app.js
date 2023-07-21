@@ -18,7 +18,7 @@ const fetcher = async (url) => {
   return response.json();
 };
 export default function App({ Component, pageProps }) {
-  const { data, error, isLoading, mutate } = useSWR(URL, fetcher);
+  const { data, isLoading } = useSWR(URL, fetcher);
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
   function handleToggleFavorite(slug) {
@@ -38,6 +38,14 @@ export default function App({ Component, pageProps }) {
       console.log("artPiecesInfo", artPiecesInfo);
       return [...artPiecesInfo, { slug, isFavorite: true }];
     });
+  }
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (!data) {
+    return <h1>No data...</h1>;
   }
 
   return (

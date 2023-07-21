@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { styled } from "styled-components";
 import { StyledLink } from "../ArtPieces";
 import ImageWithButton from "../ImageWithButton";
@@ -20,8 +19,8 @@ export default function Spotlight({
   const randomArtPiece = data[randomNumber];
 
   return (
-    <StyledLink href={`/art-pieces/${randomArtPiece.slug}`}>
-      <StyledSpotlight>
+    <StyledSpotlight>
+      <figure>
         <ImageWithButton
           src={randomArtPiece.imageSource}
           alt={`${randomArtPiece.name} by ${randomArtPiece.artist}`}
@@ -31,9 +30,13 @@ export default function Spotlight({
           handleToggleFavorite={handleToggleFavorite}
           slug={randomArtPiece.slug}
         />
-        <h1>{randomArtPiece.artist}</h1>
-      </StyledSpotlight>
-    </StyledLink>
+        <StyledLink href={`/art-pieces/${randomArtPiece.slug}`}>
+          <figcaption>
+            <h2>{randomArtPiece.artist}</h2>
+          </figcaption>
+        </StyledLink>
+      </figure>
+    </StyledSpotlight>
   );
 }
 

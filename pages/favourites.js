@@ -1,3 +1,5 @@
+import Favourites from "@/components/Favourites";
+
 export default function FavouritesPage({
   data,
   handleToggleFavorite,
